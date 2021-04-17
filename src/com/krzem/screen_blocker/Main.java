@@ -1,3 +1,7 @@
+package com.krzem.screen_blocker;
+
+
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -30,6 +34,7 @@ public class Main{
 		fr.setAlwaysOnTop(true);
 		SCREEN.setFullScreenWindow(fr);
 		JComponent cnv=new JComponent(){
+			@Override
 			public void paintComponent(Graphics g){
 				g.setColor(Color.black);
 				g.fillRect(0,0,WINDOW_SIZE.width,WINDOW_SIZE.height);
@@ -37,16 +42,19 @@ public class Main{
 		};
 		cnv.setCursor(cnv.getToolkit().createCustomCursor(new BufferedImage(1,1,BufferedImage.TYPE_INT_ARGB),new Point(),null));
 		cnv.addKeyListener(new KeyListener(){
+			@Override
 			public void keyPressed(KeyEvent e){
 				if (e.getKeyCode()==27){
 					System.exit(0);
 				}
 			}
+			@Override
 			public void keyReleased(KeyEvent e){
 				if (e.getKeyCode()==27){
 					System.exit(0);
 				}
 			}
+			@Override
 			public void keyTyped(KeyEvent e){
 				if (e.getKeyCode()==27){
 					System.exit(0);
